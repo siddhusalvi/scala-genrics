@@ -145,7 +145,5 @@ object unordered_list{
         this.data = info
       }
     }
-
   }
-
 }
