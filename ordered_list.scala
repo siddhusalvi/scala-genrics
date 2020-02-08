@@ -1,4 +1,3 @@
-import scala.io.Source
 
 /*
 Filename: ordered_list
@@ -14,7 +13,7 @@ c. Logic -> Create a Ordered Linked List having Numbers in ascending order.
 d. O/P -> The List of Numbers to a File.
 */
 
-
+import scala.io.Source
 object ordered_list {
   def main(args: Array[String]): Unit = {
     var flag = true
@@ -24,7 +23,7 @@ object ordered_list {
 
         var file = "/home/admin1/IdeaProjects/genrics/src/main/scala/words.csv"
 
-        var data = Source.fromFile(file)
+        val data = Source.fromFile(file)
         var sentence: String = ""
         for (line <- data.getLines) {
           sentence += line
@@ -146,9 +145,9 @@ object ordered_list {
     //function to check number is present in the list
     def contains(num: Int): Boolean = {
       if (isEmpty()) {
-        return false
+        false
       } else if (num < this.min && num > this.max) {
-        return false
+        false
       } else {
         var temp: Node = this.head
         while (temp != null) {
@@ -177,9 +176,7 @@ object ordered_list {
 
     //function to check list is not empty or not
     def isNotEmpty(): Boolean = {
-      if (this.isEmpty()) {
-        false
-      }
+      if (this.isEmpty()) return false
       true
     }
 
@@ -195,6 +192,4 @@ object ordered_list {
     }
 
   }
-
-
 }
