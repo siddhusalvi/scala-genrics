@@ -15,7 +15,7 @@ d. O/P -> The List of Numbers to a File.
 */
 
 
-object ordered_list{
+object unordered_list{
 
   def main(args: Array[String]): Unit = {
     var list: L_list = new L_list()
