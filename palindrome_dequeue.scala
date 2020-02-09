@@ -176,6 +176,5 @@ object palindrome_dequeue {
       }
     }
 
-
   }
 }
