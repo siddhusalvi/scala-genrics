@@ -188,12 +188,10 @@ object hashing_function {
           print(temp.data + " ")
           temp = temp.next
         }
-
       } else {
         print("list is empty")
       }
     }
-
     //function to check list is not empty or not
     def isNotEmpty(): Boolean = {
       if (this.isEmpty()) return false
