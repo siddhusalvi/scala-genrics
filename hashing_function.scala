@@ -218,7 +218,5 @@ object hashing_function {
         this.data = num
       }
     }
-
   }
-
 }
