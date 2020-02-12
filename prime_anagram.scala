@@ -37,18 +37,35 @@ object prime_anagram{
                 temp_index += 1
               }
             }
+            var two_d_size :Int = 0
             var record:L_list = new L_list()
             for (num <- 0 until prime_List.length - 1) {
               for (num_next <- num + 1 until prime_List.length) {
                 if (areAnagram(prime_List(num).toString, prime_List(num_next).toString)) {
-                  println("Anagram pair is : "+prime_List(num)+" "+prime_List(num_next))
+                  two_d_size += 1
                   record.add(prime_List(num))
-                  record.add((prime_List(num_next)))
+                  record.add(prime_List(num_next))
                 }
               }
               }
-              println("There are total "+record.length+" anagrams in the list")
-
+              var two_d_data = Array.ofDim[Int](two_d_size,2)
+            var two_d_index:Int = 0
+            for (num <- 0 until prime_List.length - 1) {
+              for (num_next <- num + 1 until prime_List.length) {
+                if (areAnagram(prime_List(num).toString, prime_List(num_next).toString) && two_d_index < two_d_size) {
+                    two_d_data(two_d_index)(0) = prime_List(num)
+                    two_d_data(two_d_index)(1) = prime_List(num_next)
+                  two_d_index +=1
+                }
+              }
+            }
+            for(row <-0 until two_d_size){
+              for(col <- 0 to 1){
+                print(two_d_data(row)(col)+" ")
+              }
+              println()
+            }
+            println("There are total "+record.length+" anagrams in the list")
           }
         }else{
           print("please enter valid Input : \n")
@@ -84,7 +101,6 @@ object prime_anagram{
     }
     count
   }
-
   //function to check anagram
   def areAnagram(word1: String, word2: String):Boolean ={
     if(word1.length() != word2.length()){
@@ -102,26 +118,27 @@ object prime_anagram{
       true
     }
   }
+  // Ordered linked list class
   class L_list {
     var max = 0
     var min = 0
     var length: Int = 0
-    var head: Node = null
+    var head: Node = _
 
     //Function to get min
-    def getMin(): Int = {
+    def getMin: Int = {
       this.min
     }
 
     //Function to get max
-    def getMax(): Int = {
+    def getMax: Int = {
       this.max
     }
 
     // function to add data
     def add(num: Int): Unit = {
       var temp: Node = new Node(num)
-      if (isEmpty()) {
+      if (isEmpty) {
         this.head = temp
         this.min = num
         this.max = num
@@ -155,17 +172,17 @@ object prime_anagram{
       }
 
     }
-
+    //function to get first element in the list
     def top():Int={
       if(isNotEmpty()){
         return this.head.data
       }
-      2
+     -1
     }
 
     //function to remove data from the list
     def delete(num: Int): Unit = {
-      if (isEmpty()) {
+      if (isEmpty) {
         print("List is empty can't delete data ")
       } else {
         if (contains(num)) {
@@ -197,7 +214,7 @@ object prime_anagram{
 
     //function to check number is present in the list
     def contains(num: Int): Boolean = {
-      if (isEmpty()) {
+      if (isEmpty) {
         false
       } else if (num < this.min && num > this.max) {
         false
@@ -213,7 +230,7 @@ object prime_anagram{
       }
     }
 
-    //Function to print list
+    //Function to print the list
     def display(): Unit = {
       if (isNotEmpty()) {
         var temp: Node = this.head
@@ -226,7 +243,8 @@ object prime_anagram{
       }
     }
 
-    def getDataInArray():Array[Int]={
+    //Function to convert linked list into an array
+    def getDataInArray:Array[Int]={
       if(isNotEmpty()){
         var temp1:Array[Int] = new Array[Int](length)
         var index = 0
@@ -245,12 +263,12 @@ object prime_anagram{
 
     //function to check list is not empty or not
     def isNotEmpty(): Boolean = {
-      if (this.isEmpty()) return false
+      if (this.isEmpty) return false
       true
     }
 
     //function to check list is empty or not
-    def isEmpty(): Boolean = {
+    def isEmpty: Boolean = {
       if (this.length == 0) {
         return true
       }
