@@ -15,17 +15,17 @@ object prime_anagram_stack {
     var flag = true
     while (flag) {
       try {
-        var record:Stack = new Stack()
+        var record: Stack = new Stack()
         print("Enter min of range : ")
         var min_start = scala.io.StdIn.readInt()
         print("Enter min of range : ")
         var max_end = scala.io.StdIn.readInt()
 
-        if(min_start < max_end){
-          var prime_count:Int = getPrimeCount(min_start, max_end)
-          if(prime_count < 2 ){
+        if (min_start < max_end) {
+          var prime_count: Int = getPrimeCount(min_start, max_end)
+          if (prime_count < 2) {
             print("there is 0 or single prime number in this range.\n")
-          }else {
+          } else {
             var prime_List: Array[Int] = new Array[Int](prime_count)
             var temp_index: Int = 0
             for (num <- min_start to max_end) {
@@ -34,7 +34,6 @@ object prime_anagram_stack {
                 temp_index += 1
               }
             }
-            var two_d_size: Int = 0
             for (num <- 0 until prime_List.length - 1) {
               for (num_next <- num + 1 until prime_List.length) {
                 if (areAnagram(prime_List(num).toString, prime_List(num_next).toString)) {
@@ -44,23 +43,10 @@ object prime_anagram_stack {
               }
             }
             println("Prime numbers which are also anagrams :")
-            record.display
+            record.display()
           }
-            flag = false
-          }
-
-
-
-
-
-
-
-
-
-
-
-
-
+          flag = false
+        }
       }
       catch {
         case _ => print("Something went wrong Error occurred.")
@@ -100,11 +86,11 @@ object prime_anagram_stack {
     if (word1.length() != word2.length()) {
       false
     } else {
-      var dta1 = word1.toCharArray()
+      var dta1 = word1.toCharArray
       quickSort(dta1)
-      var dta2 = word2.toCharArray()
+      var dta2 = word2.toCharArray
       quickSort(dta2)
-      for (index <- 0 until dta1.length) {
+      for (index <- dta1.indices) {
         if (dta1(index).asDigit != dta2(index).asDigit) {
           return false
         }
@@ -112,8 +98,6 @@ object prime_anagram_stack {
       true
     }
   }
-
-  // Ordered linked list class
 
   //Stack class to manage data
   class Stack {
@@ -126,6 +110,15 @@ object prime_anagram_stack {
         false
       } else {
         true
+      }
+    }
+
+    // to check stack is empty or not
+    def isEmpty: Boolean = {
+      if (this.len == 0) {
+        true
+      } else {
+        false
       }
     }
 
@@ -143,7 +136,7 @@ object prime_anagram_stack {
     }
 
     //Function to display data
-    def display: Unit = {
+    def display(): Unit = {
       if (isEmpty) {
         print("stack is empty")
       } else {
@@ -155,17 +148,8 @@ object prime_anagram_stack {
       }
     }
 
-    // to check stack is empty or not
-    def isEmpty: Boolean = {
-      if (this.len == 0) {
-        true
-      } else {
-        false
-      }
-    }
-
     //Function to delete the data
-    def pop: Unit = {
+    def pop(): Unit = {
       if (isEmpty) {
         print("stack is empty")
       } else if (this.len == 1) {
@@ -190,8 +174,5 @@ object prime_anagram_stack {
         this.data = num
       }
     }
-
   }
-
-
 } 
