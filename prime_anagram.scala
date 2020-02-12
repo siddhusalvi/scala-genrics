@@ -18,7 +18,7 @@ object prime_anagram{
     var flag = true
     while(flag){
       try{
-        flag = false
+
         print("Enter min of range : ")
         var min_start = scala.io.StdIn.readInt()
         print("Enter min of range : ")
@@ -66,10 +66,12 @@ object prime_anagram{
               println()
             }
             println("There are total "+record.length+" anagrams in the list")
+            flag = false
           }
         }else{
           print("please enter valid Input : \n")
         }
+
       }
       catch{
         case _=>print("Something went wrong Error occurred.")
