@@ -1,7 +1,5 @@
 import java.lang.Math.sqrt
-
 import scala.util.Sorting.quickSort
-
 /*
 Filename: prime_anagram_stack
 Created: Siddhesh Salvi
